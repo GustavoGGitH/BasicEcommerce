@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+
+			<style>
+				.list-group-item {
+					margin-bottom: 10px;
+					/* Ajusta el valor según sea necesario */
+				}
+			</style>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-md-6">
+						<img th:if="${producto.foto != null and #strings.length(producto.foto) > 0}"
+							class="img-thumbnail rounded float-left" style="max-width: 100%;"
+							th:src="@{'/uploads/' + ${producto.foto}}" th:alt="${producto.foto}" />
+					</div>
+					<div class="col-md-6">
+
+
+						<ul class="list-group">
+							<li class="list-group-item active"><strong>Descripción:</strong> <span
+									th:text="${producto.desc_producto}"></span></li>
+							<li class="list-group-item precio"><strong>Precio:</strong> <span
+									th:text="${producto.precio}"></span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<a th:href="@{/productos}" class="btn btn-light btn-xs" style="margin-top: 10px;">&laquo; Volver</a>
+
+
+		<footer th:replace="layout/layout :: footer"></footer>
+</body>
+
+</html>
